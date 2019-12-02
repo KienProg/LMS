@@ -1,4 +1,6 @@
+
 <?php
+    session_start();
     include "connection.php";
 ?>
 <!DOCTYPE html>
@@ -10,11 +12,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Student Login Form | LMS </title>
+    <title>Librarian Login Form | LMS </title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- <link href="css/anitmate.css" rel="stylesheet"> -->
+    <link href="css/animate.min.css" rel="stylesheet">
     <link href="css/custom.min.css" rel="stylesheet">
 </head>
 
@@ -33,7 +35,7 @@
 
     <section class="login_content">
         <form name="form1" action="" method="post">
-            <h1>User Login Form</h1>
+            <h1>Librarian Login Form</h1>
 
             <div>
                 <input type="text" name="username" class="form-control" placeholder="Username" required=""/>
@@ -62,12 +64,13 @@
         </form>
     </section>
 
+
 </div>
 
 <?php
-    if(isset($_POST["submit1"])){
-        $count = 0;
-        $res = mysqli_query($link,"select *from student_registration where username='$_POST[username]' && password='$_POST[password]' && status='yes'");
+  if(isset($_POST['submit1'])){
+     $count = 0;
+        $res = mysqli_query($link,"select *from librarian_registration where username='$_POST[username]' && password='$_POST[password]'");
         $count = mysqli_num_rows($res);
         if($count==0){
 ?>
@@ -76,18 +79,15 @@
             </div>
 <?php
         }else{
+        $_SESSION["librarian"] = $_POST["username"];
 ?>
             <script type="text/javascript">
-            window.location = "demo.php";
+            window.location = "display_student_info.php";
             </script>
 <?php
         }
-
-    }
+  }
 ?>
-
-
-
 
 </body>
 </html>

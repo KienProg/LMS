@@ -60,17 +60,21 @@
                     <div>
                         <input type="text" class="form-control" placeholder="Enrollment No" name="enrollmentno" required=""/>
                     </div>
-                    <div class="col-lg-12  col-lg-push-3">
+                    <div class="col-lg-12 ">
+                        <a href="http://localhost:99/lms/student/login.php" class="btn btn-success">Login</a>
                         <input class="btn btn-default submit " type="submit" name="submit1" value="Register">
+
                     </div>
+
 
                 </form>
             </section>
 
             <?php
 
-if(isset($_POST["submit1"])){
-                    mysqli_query($link,"insert into student_registration values('','$_POST[firstname]', '$_POST[lastname]','$_POST[username]','$_POST[password]','$_POST[email]','$_POST[contact]','$_POST[sem]','$_POST[enrollmentno]') ");              ?>
+
+            if(isset($_POST["submit1"])){
+                    mysqli_query($link,"insert into student_registration values('','$_POST[firstname]', '$_POST[lastname]','$_POST[username]','$_POST[password]','$_POST[email]','$_POST[contact]','$_POST[sem]','$_POST[enrollmentno]','no') ");              ?>
               <div class="alert alert-success col-lg-12">
                 Registration successfully, You will get email when your account is approved
               </div>
